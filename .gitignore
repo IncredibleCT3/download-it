@@ -1,0 +1,14 @@
+# Build outputs
+bin/
+obj/
+
+# Downloads
+backend/downloads/
+
+# Node
+node_modules/
+
+# IDE
+.vs/
+.vscode/
+*.user
