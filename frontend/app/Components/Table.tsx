@@ -1,214 +1,168 @@
-import React from 'react'
+"use client"
 
-const Table = () => {
+import { useState } from "react";
+
+interface GameData {
+  id: number;
+  title: string;
+  channel: string;
+  players: string;
+  rating: number;
+}
+
+const gameData: GameData[] = [
+  { id: 1, title: "Wii Sports", channel: "Disc Channel", players: "1-4", rating: 5 },
+  { id: 2, title: "Mario Kart Wii", channel: "Disc Channel", players: "1-4", rating: 5 },
+  { id: 3, title: "Wii Fit", channel: "Disc Channel", players: "1", rating: 4 },
+  { id: 4, title: "Super Smash Bros. Brawl", channel: "Disc Channel", players: "1-4", rating: 5 },
+  { id: 5, title: "The Legend of Zelda: Twilight Princess", channel: "Disc Channel", players: "1", rating: 5 },
+  { id: 6, title: "Wii Play", channel: "Disc Channel", players: "1-2", rating: 4 },
+  { id: 7, title: "New Super Mario Bros. Wii", channel: "Disc Channel", players: "1-4", rating: 5 },
+];
+
+export function Table() {
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+
   return (
-    <div className="overflow-x-auto w-2/3">
-        <table className="table table-xs">
+    <div className="w-full max-w-5xl">
+      <div className="minimal-container">
+        {/* Table Container */}
+        <div className="minimal-table-wrapper">
+          <table className="minimal-table">
             <thead>
-            <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>company</th>
-                <th>location</th>
-                <th>Last Login</th>
-                <th>Favorite Color</th>
-            </tr>
+              <tr>
+                <th className="minimal-th">Title</th>
+                <th className="minimal-th">Author</th>
+                <th className="minimal-th">Duration</th>
+                <th className="minimal-th">Folder</th>
+              </tr>
             </thead>
             <tbody>
-            <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Littel, Schaden and Vandervort</td>
-                <td>Canada</td>
-                <td>12/16/2020</td>
-                <td>Blue</td>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Zemlak, Daniel and Leannon</td>
-                <td>United States</td>
-                <td>12/5/2020</td>
-                <td>Purple</td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Carroll Group</td>
-                <td>China</td>
-                <td>8/15/2020</td>
-                <td>Red</td>
-            </tr>
-            <tr>
-                <th>4</th>
-                <td>Marjy Ferencz</td>
-                <td>Office Assistant I</td>
-                <td>Rowe-Schoen</td>
-                <td>Russia</td>
-                <td>3/25/2021</td>
-                <td>Crimson</td>
-            </tr>
-            <tr>
-                <th>5</th>
-                <td>Yancy Tear</td>
-                <td>Community Outreach Specialist</td>
-                <td>Wyman-Ledner</td>
-                <td>Brazil</td>
-                <td>5/22/2020</td>
-                <td>Indigo</td>
-            </tr>
-            <tr>
-                <th>6</th>
-                <td>Irma Vasilik</td>
-                <td>Editor</td>
-                <td>Wiza, Bins and Emard</td>
-                <td>Venezuela</td>
-                <td>12/8/2020</td>
-                <td>Purple</td>
-            </tr>
-            <tr>
-                <th>7</th>
-                <td>Meghann Durtnal</td>
-                <td>Staff Accountant IV</td>
-                <td>Schuster-Schimmel</td>
-                <td>Philippines</td>
-                <td>2/17/2021</td>
-                <td>Yellow</td>
-            </tr>
-            <tr>
-                <th>8</th>
-                <td>Sammy Seston</td>
-                <td>Accountant I</td>
-                <td>O'Hara, Welch and Keebler</td>
-                <td>Indonesia</td>
-                <td>5/23/2020</td>
-                <td>Crimson</td>
-            </tr>
-            <tr>
-                <th>9</th>
-                <td>Lesya Tinham</td>
-                <td>Safety Technician IV</td>
-                <td>Turner-Kuhlman</td>
-                <td>Philippines</td>
-                <td>2/21/2021</td>
-                <td>Maroon</td>
-            </tr>
-            <tr>
-                <th>10</th>
-                <td>Zaneta Tewkesbury</td>
-                <td>VP Marketing</td>
-                <td>Sauer LLC</td>
-                <td>Chad</td>
-                <td>6/23/2020</td>
-                <td>Green</td>
-            </tr>
-            <tr>
-                <th>11</th>
-                <td>Andy Tipple</td>
-                <td>Librarian</td>
-                <td>Hilpert Group</td>
-                <td>Poland</td>
-                <td>7/9/2020</td>
-                <td>Indigo</td>
-            </tr>
-            <tr>
-                <th>12</th>
-                <td>Sophi Biles</td>
-                <td>Recruiting Manager</td>
-                <td>Gutmann Inc</td>
-                <td>Indonesia</td>
-                <td>2/12/2021</td>
-                <td>Maroon</td>
-            </tr>
-            <tr>
-                <th>13</th>
-                <td>Florida Garces</td>
-                <td>Web Developer IV</td>
-                <td>Gaylord, Pacocha and Baumbach</td>
-                <td>Poland</td>
-                <td>5/31/2020</td>
-                <td>Purple</td>
-            </tr>
-            <tr>
-                <th>14</th>
-                <td>Maribeth Popping</td>
-                <td>Analyst Programmer</td>
-                <td>Deckow-Pouros</td>
-                <td>Portugal</td>
-                <td>4/27/2021</td>
-                <td>Aquamarine</td>
-            </tr>
-            <tr>
-                <th>15</th>
-                <td>Moritz Dryburgh</td>
-                <td>Dental Hygienist</td>
-                <td>Schiller, Cole and Hackett</td>
-                <td>Sri Lanka</td>
-                <td>8/8/2020</td>
-                <td>Crimson</td>
-            </tr>
-            <tr>
-                <th>16</th>
-                <td>Reid Semiras</td>
-                <td>Teacher</td>
-                <td>Sporer, Sipes and Rogahn</td>
-                <td>Poland</td>
-                <td>7/30/2020</td>
-                <td>Green</td>
-            </tr>
-            <tr>
-                <th>17</th>
-                <td>Alec Lethby</td>
-                <td>Teacher</td>
-                <td>Reichel, Glover and Hamill</td>
-                <td>China</td>
-                <td>2/28/2021</td>
-                <td>Khaki</td>
-            </tr>
-            <tr>
-                <th>18</th>
-                <td>Aland Wilber</td>
-                <td>Quality Control Specialist</td>
-                <td>Kshlerin, Rogahn and Swaniawski</td>
-                <td>Czech Republic</td>
-                <td>9/29/2020</td>
-                <td>Purple</td>
-            </tr>
-            <tr>
-                <th>19</th>
-                <td>Teddie Duerden</td>
-                <td>Staff Accountant III</td>
-                <td>Pouros, Ullrich and Windler</td>
-                <td>France</td>
-                <td>10/27/2020</td>
-                <td>Aquamarine</td>
-            </tr>
-            <tr>
-                <th>20</th>
-                <td>Lorelei Blackstone</td>
-                <td>Data Coordiator</td>
-                <td>Witting, Kutch and Greenfelder</td>
-                <td>Kazakhstan</td>
-                <td>6/3/2020</td>
-                <td>Red</td>
-            </tr>
+              {gameData.map((game) => (
+                <tr
+                  key={game.id}
+                  className={`minimal-tr ${
+                    selectedRow === game.id ? "minimal-tr-selected" : ""
+                  } ${hoveredRow === game.id ? "minimal-tr-hover" : ""}`}
+                  onClick={() => setSelectedRow(game.id)}
+                  onMouseEnter={() => setHoveredRow(game.id)}
+                  onMouseLeave={() => setHoveredRow(null)}
+                >
+                  <td className="minimal-td">{game.title}</td>
+                  <td className="minimal-td">{game.channel}</td>
+                  <td className="minimal-td">{game.players}</td>
+                  <td className="minimal-td">
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <span
+                          key={i}
+                          className={`minimal-star ${
+                            i < game.rating ? "minimal-star-filled" : ""
+                          }`}
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
-            <tfoot>
-            <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>company</th>
-                <th>location</th>
-                <th>Last Login</th>
-                <th>Favorite Color</th>
-            </tr>
-            </tfoot>
-        </table>
+          </table>
+        </div>
+      </div>
+
+      <style>{`
+        .minimal-container {
+          background: #0a0a0a;
+          border-radius: 0;
+          padding: 0;
+        }
+
+        .minimal-header {
+          text-align: center;
+          margin-bottom: 48px;
+        }
+
+        .minimal-header h1 {
+          color: #ffffff;
+          font-size: 32px;
+          font-weight: 700;
+          letter-spacing: -0.5px;
+        }
+
+        .minimal-table-wrapper {
+          background: transparent;
+          border-radius: 0;
+          padding: 0;
+        }
+
+        .minimal-table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        .minimal-th {
+          padding: 16px 20px;
+          text-align: left;
+          color: #666666;
+          font-weight: 500;
+          background: transparent;
+          border-bottom: 1px solid #1a1a1a;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .minimal-tr {
+          cursor: pointer;
+          transition: all 0.15s ease;
+        }
+
+        .minimal-td {
+          padding: 20px;
+          background: #0f0f0f;
+          border-bottom: 1px solid #1a1a1a;
+          transition: all 0.15s ease;
+          color: #e5e5e5;
+          font-size: 15px;
+        }
+
+        .minimal-tr:first-child .minimal-td {
+          border-top: 1px solid #1a1a1a;
+        }
+
+        .minimal-tr-hover .minimal-td {
+          background: #1a1a1a;
+        }
+
+        .minimal-tr-selected .minimal-td {
+          background: #2a2a2a;
+          border-bottom-color: #333333;
+          color: #ffffff;
+        }
+
+        .minimal-tr-selected:first-child .minimal-td {
+          border-top-color: #333333;
+        }
+
+        .minimal-star {
+          font-size: 16px;
+          color: #2a2a2a;
+          transition: all 0.2s ease;
+        }
+
+        .minimal-star-filled {
+          color: #ffffff;
+        }
+
+        .minimal-tr-selected .minimal-star-filled {
+          color: #ffffff;
+        }
+      `}</style>
     </div>
-  )
+  );
 }
+
+export default Table

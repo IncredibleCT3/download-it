@@ -1,13 +1,25 @@
 "use client"
 
 import React from 'react'
-import DownloadBtn from './DownloadBtn'
 
 const SearchBar = () => {
   const [validLink, setValidLink] = React.useState(false)
+  const [videos, setVideos] = React.useState([])
 
   const validateLink = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValidLink(e.target.validity.valid)
+  }
+
+  async function downloadVideos(url: string) {
+    const encodedUrl = encodeURIComponent(url);
+    fetch(`http://localhost:8000/download/${encodedUrl}`)
+      .then(res => res.blob())
+      .then(blob => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "video.mp4";
+        a.click();
+    });
   }
 
   return (
@@ -36,7 +48,10 @@ const SearchBar = () => {
         />
       </label>
       <p className="validator-hint">Must be valid URL</p>
-      <button className={validLink ? "btn btn-wide mb-10" : "btn btn-wide mb-10 btn-disabled"}>Download</button>
+      <button 
+        className={validLink ? "btn btn-wide mb-10" : "btn btn-wide mb-10 btn-disabled"}
+        onClick={() => downloadVideos((document.getElementById('url-input') as HTMLInputElement)?.value || '')}
+      >Download</button>
     </div>
   )
 }
