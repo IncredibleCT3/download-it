@@ -11,15 +11,9 @@ const SearchBar = () => {
   }
 
   async function downloadVideos(url: string) {
-    const encodedUrl = encodeURIComponent(url);
-    fetch(`http://localhost:8000/download/${encodedUrl}`)
-      .then(res => res.blob())
-      .then(blob => {
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "video.mp4";
-        a.click();
-    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/download?url=${url}`)
+    const data = await res.json()
+    console.log(data)
   }
 
   return (

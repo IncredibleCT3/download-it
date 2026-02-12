@@ -1,7 +1,7 @@
 import yt_dlp
 import os
 
-def download_video(url, output_dir='C:\\Users\\thornc\\Downloads'):
+def download_video(url, output_dir='root@localhost:/media#'):
     if os.path.isdir(output_dir):
         print(f"Output directory {output_dir} exists.")
     else:
@@ -16,7 +16,7 @@ def download_video(url, output_dir='C:\\Users\\thornc\\Downloads'):
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
 
-def download_playlist(url, output_dir='C:\\Users\\thornc\\Downloads'):
+def download_playlist(url, output_dir='root@localhost:/media#'):
     if os.path.isdir(output_dir):
         print(f"Output directory {output_dir} exists.")
     else:
