@@ -11,15 +11,20 @@ const SearchBar = () => {
   }
 
   async function downloadVideos(url: string) {
-    const encodedUrl = encodeURIComponent(url);
-    fetch(`http://localhost:8000/download/${encodedUrl}`)
-      .then(res => res.blob())
-      .then(blob => {
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "video.mp4";
-        a.click();
+    // const encodedUrl = encodeURIComponent(url);
+    const response = await fetch('http://localhost:8000/download/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url }),
     });
+
+    if (response.ok) {
+      console.log('Download started successfully');
+    } else {
+      console.error('Failed to start download');
+    }
   }
 
   return (
