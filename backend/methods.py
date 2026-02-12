@@ -1,14 +1,19 @@
 import yt_dlp
 import os
+from pydantic import BaseModel
 
-def download_video(url, output_dir='./download-it/videos'):
+
+class Video(BaseModel):
+    url: str
+
+def download_video(video: Video, output_dir='./download-it/videos'):
     ydl_opts = {
         'paths': {'home': output_dir},
         'outtmpl': {'default': '%(title)s.%(ext)s'},
         'progress_hooks': [my_progress_hook], # function to track progress
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+        ydl.download([video.url])
 
     return {"message": "Download started"}
 

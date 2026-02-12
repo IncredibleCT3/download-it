@@ -16,6 +16,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/download")
-def download(url: str):
-    return methods.download_video(url)
+@app.post("/download/")
+def download(video: methods.Video):
+    return methods.download_video(video)
