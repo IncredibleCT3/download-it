@@ -6,6 +6,7 @@ def download_video(url, output_dir='./download-it/videos'):
         'paths': {'home': output_dir},
         'outtmpl': {'default': '%(title)s.%(ext)s'},
         'progress_hooks': [my_progress_hook], # function to track progress
+        'cookiesfrombrowser': ('chrome',),  # or 'chromium', 'edge', 'brave', etc.
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
