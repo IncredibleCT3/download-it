@@ -19,8 +19,14 @@ const SearchBar = () => {
       },
       body: JSON.stringify({ url }),
     })
+    if (res.ok) {
+      console.log('Download started successfully');
+    } else {
+      console.error('Failed to start download');
+    }
     const data = await res.json()
     console.log(data)
+    
   }
 
   return (
