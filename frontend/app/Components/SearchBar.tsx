@@ -12,7 +12,7 @@ const SearchBar = () => {
 
   async function downloadVideos(url: string) {
     const apiBase = (process.env.NEXT_PUBLIC_API_URL)
-    const res = await fetch(`${apiBase}/download`, {
+    const res = await fetch(`${apiBase}/download/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

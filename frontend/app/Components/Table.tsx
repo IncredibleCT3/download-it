@@ -18,6 +18,7 @@ const gameData: GameData[] = [
   { id: 5, title: "The Legend of Zelda: Twilight Princess", channel: "Disc Channel", players: "1", rating: 5 },
   { id: 6, title: "Wii Play", channel: "Disc Channel", players: "1-2", rating: 4 },
   { id: 7, title: "New Super Mario Bros. Wii", channel: "Disc Channel", players: "1-4", rating: 5 },
+  { id: 8, title: "Donkey Kong", channel: "Disc Channel", players: "1-4", rating: 9 },
 ];
 
 export function Table() {
